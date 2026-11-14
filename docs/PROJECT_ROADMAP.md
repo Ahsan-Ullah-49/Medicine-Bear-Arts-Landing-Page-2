@@ -1,11 +1,11 @@
 # Project roadmap
 
-Current stage: **independent local copy and SEO foundation complete; product additions and launch setup pending**. Phase order is a planning guide; dependencies and client approvals govern actual implementation. See [PROJECT_STATUS.md](PROJECT_STATUS.md) for verified progress.
+Current stage: **independent local copy and root-page SEO foundation complete; product-intake documentation prepared; product additions, product-route SEO decision, and launch setup pending**. Phase order is a planning guide; dependencies and client approvals govern actual implementation. See [PROJECT_STATUS.md](PROJECT_STATUS.md) for verified progress.
 
 ## 2026-11-14 fork milestone
 
 - Completed a byte-verified copy of the source working tree into `Medicine Bear Arts Landing Page 2`; created a fresh local Git repository with no remote to keep pushes isolated from the original project.
-- Preserved all 12 existing product entries and local assets. Adding further products is pending their approved Shopify links/details and media.
+- Preserved all 12 existing product entries and local assets. The owner plans for approximately 20–25 total products; an intake template and update checklist are prepared, while additions remain pending approved Shopify links/details and media.
 - Added the requested sales-subdomain canonical, social metadata, brand/site JSON-LD, `robots.txt`, `sitemap.xml`, and [SEO.md](SEO.md).
 - Added a dedicated browser cart namespace and sales-page attributes to newly created Shopify carts. The original page is unchanged; both still use the same Shopify store, and an order has not been used to verify attribute carry-through.
 - Still pending: choose and connect the hosting provider, attach `sales.medicinebeararts.com`, verify HTTPS, create/connect the new hosted Git remote, and complete post-deployment SEO and commerce checks. No production changes were made.
@@ -16,7 +16,11 @@ Document requirements, proposed architecture, project constraints, assistant ins
 
 ## Phase 2: Product preparation — in progress
 
-Select approximately 10–12 products; collect verified names, specifications, variants, approved marketing content, imagery, and rights. Obtain and validate Shopify product and variant mappings and product publication/availability requirements.
+Preserve the 12 current entries and prepare for approximately 20–25 total products. Use [PRODUCT_INTAKE_TEMPLATE.md](PRODUCT_INTAKE_TEMPLATE.md) to collect verified names, specifications, Shopify links and variants, approved marketing content, imagery, rights, and per-product SEO needs. Confirm Canada/CAD publication and availability from live Shopify data. Add products only after the client supplies and approves the required facts and media; then review catalog layout and asset performance at the final scale.
+
+## Product SEO dependency — decision pending
+
+The current SEO baseline covers one canonical landing page. Decide whether the client needs only campaign selection links or a distinct organic-search page for each product. If the latter, select and implement a crawlable route strategy, unique approved metadata and copy, verified structured data, and matching sitemap entries before claiming product-level SEO readiness. Product details and the chosen route strategy are not yet available.
 
 ## Phase 3: Frontend design — in progress
 

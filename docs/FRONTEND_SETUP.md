@@ -20,7 +20,13 @@ Smooth wheel scrolling uses locally bundled Lenis and its MIT license in `assets
 
 ## Products, prices and contact
 
-Edit `js/products.js` to add products or update their content and media. Each product needs a unique stable slug; a local product URL is `index.html?product=your-slug`. Twelve products are configured; the featured product is excluded from the remaining recommendations. An unknown slug shows the first product and a notice. Other campaign parameters are retained when navigating.
+Edit `js/products.js` to add products or update their content and media. Each product needs a unique stable slug; a local product URL is `index.html?product=your-slug`. Twelve products are configured now, and the owner plans for approximately 20–25 total once the client supplies approved data. The collection is data-driven, with no fixed 12-product limit documented; check layout and performance with the final catalog and media. The featured product is excluded from the remaining recommendations. An unknown slug shows the first product and a notice. Other campaign parameters are retained when navigating. Use [PRODUCT_INTAKE_TEMPLATE.md](PRODUCT_INTAKE_TEMPLATE.md) to collect and validate each addition before editing the catalog.
+
+## Adding the next products
+
+For each item, collect the public Shopify product URL, client-approved title and copy, options/variants, and approved image/video files with usage approval. Keep Shopify as the source of live price and availability; CSV values are reference snapshots only. Give each product a stable, unique URL slug and map every media path and variant option carefully. Preserve the existing 12 entries. After adding products, review the featured-product selection, recommendation grid, gallery, options, WhatsApp link, cart add, and layout at desktop and mobile widths.
+
+The current `?product=<slug>` URL selects content on the same landing page. It does not create a unique canonical URL, title, description, or structured-data record for each product. If product-by-product organic SEO is required, implement and verify distinct crawlable product routes before claiming those products are separately SEO-ready; see [SEO.md](SEO.md).
 
 The configured WhatsApp number is the client-supplied Canadian number. Product links include the relevant product name in the message. CSV catalog values and variant IDs are snapshots; `js/shopify.js` requests live products, variants, prices, and availability from the Storefront API in the Canadian context and verifies CAD. Grand Mother Wolf and Celestial Moonlight have gemstone options. Celestial chain-length requests should be discussed on WhatsApp because this frontend does not currently provide an order-note field. The page falls back to labeled snapshot prices when the store cannot be reached.
 

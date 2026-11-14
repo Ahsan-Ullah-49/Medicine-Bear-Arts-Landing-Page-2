@@ -7,10 +7,10 @@ Initialized 2026-11-03 from the project brief. Confirmed items are requirements 
 - On 2026-11-14, create an independent local project named **Medicine Bear Arts Landing Page 2** from the current Medicine Bear Arts working tree, preserving its current local file contents and all 12 existing products while leaving the source project untouched.
 - Use `https://sales.medicinebeararts.com/` as the requested canonical target for this campaign page. Its hosting provider, DNS record, HTTPS deployment, and remote GitHub repository have not yet been configured.
 - Keep the copied Shopify store, product IDs, Canadian market, CAD currency, existing media, and checkout integration unchanged. Additional products require approved product information and media before being added.
-- Keep one canonical landing-page URL for the current query-parameter product selector. Product-specific SEO pages and `Product` structured data are deferred until distinct, crawlable product routes and verified live product values are implemented.
+- The current selector continues to use one canonical landing-page URL; query URLs do not count as individual product SEO pages. The current root-page SEO remains in place. Decide and implement distinct crawlable product routes, unique approved metadata, and verified structured data if the client expects individual product search listings; do not claim product-level SEO until that work is complete.
 - The existing Shopify store is the intended commerce backend; payments and order processing use Shopify.
 - The frontend and its campaign presentation will be independently customized; the preferred stack is HTML, CSS, and vanilla JavaScript.
-- Approximately 10–12 selected products will be advertised using one dynamic landing page with product-specific URLs.
+- For this separate project, plan for approximately 20–25 total campaign products; the existing 12 remain preserved. The target is not a hard cap and is contingent on client-supplied, approved product facts and media. Product selection links continue to use the current dynamic landing page unless distinct product routes are implemented for SEO.
 - Each selected product can become the main featured product; the other selected products appear as recommendations.
 - Customers should be able to purchase multiple products together with adjustable quantities.
 - Advertising platforms are Google, Meta, and TikTok.
@@ -30,7 +30,7 @@ Initialized 2026-11-03 from the project brief. Confirmed items are requirements 
 
 ## Pending decisions and information
 
-- Final product selection, approved imagery and rights, marketing content, and design/branding details.
+- New product selection, approved imagery and rights, marketing content, and design/branding details; use the product intake template and verify live Shopify variants/prices/availability. Decide whether each product needs its own crawlable organic-search page.
 - Hosting platform, DNS configuration for `sales.medicinebeararts.com`, deployment method, and access to create/connect the separate hosted repository.
 - Shopify API access, required scopes, compatibility, and product/variant mappings.
 - Tracking IDs, current Shopify advertising integrations, event ownership and deduplication, and consent management.
@@ -54,5 +54,6 @@ Initialized 2026-11-03 from the project brief. Confirmed items are requirements 
 | 2026-11-04 | Apply the requested hover hierarchy and move frontend scripts to the document end. | The owner requested theme-style fills for quantity and cart controls and a reverse-fill interaction for primary conversion actions. | Quantity and cart controls use forest-fill hovers; Contact us, Add to Cart, and Chat on WhatsApp begin green and reveal a forest outline on hover; JavaScript resources remain ordered by dependency at the end of the local document. |
 | 2026-11-14 | Create a separate local copy named Medicine Bear Arts Landing Page 2 and target its SEO metadata at `sales.medicinebeararts.com`. | The owner requested independent work, a separate repo, the sales subdomain, and SEO/documentation while preserving the original project. | Copied 91 files with matching hashes before SEO edits, excluded the source Git directory, initialized a fresh local repository, and left the source untouched. Added canonical/social metadata, site/publisher JSON-LD, robots, sitemap, and SEO guidance. Host, DNS, remote repo, new products, and launch verification remain pending. |
 | 2026-11-14 | Isolate the new page's browser cart state and mark its Shopify carts with the sales-page source. | The owner asked that the new page's carts and orders be distinguishable from the original page. | Added a unique preview-cart key and Storefront cart namespace plus sales-channel/domain cart attributes. Both pages still use the same Shopify store; separate-store order handling is not configured, and no test order was placed. |
+| 2026-11-14 | Plan this separate campaign for approximately 20–25 total products and prepare a repeatable intake/update process. | The owner expects more products from the client and wants them added quickly without disrupting the preserved original 12. | Added a per-product intake template and updated setup, SEO, status, roadmap, and master-context guidance. No new product data or assets were supplied or added. The current canonical remains root-only; per-product SEO routes remain a separate pending implementation decision. |
 
 For future entries, add a dated row identifying the decision, rationale, and consequences; update the relevant master context, roadmap, and status when needed. Record reversals and their reasons rather than silently rewriting history.

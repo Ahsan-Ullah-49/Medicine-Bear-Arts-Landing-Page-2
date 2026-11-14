@@ -1,6 +1,6 @@
 # Medicine Bear Arts Landing Page 2
 
-A separate, mobile-first static campaign storefront for Medicine Bear Arts. It presents the copied 12-product collection and sends live cart and checkout activity to the existing Shopify store.
+A separate, mobile-first static campaign storefront for Medicine Bear Arts. It currently preserves the original 12 configured products; the owner plans to grow this campaign to approximately 20–25 products when the client supplies approved product links and assets. Live cart and checkout activity still use the existing Shopify store.
 
 ## Separate project and target domain
 
@@ -10,7 +10,7 @@ The sales hostname is the requested target. A hosting provider, DNS record, HTTP
 
 ## What is included
 
-- Twelve selectable products through `?product=<slug>` URLs.
+- Twelve products currently selectable through `?product=<slug>` URLs; the catalog is configuration-driven and the planned total is approximately 20–25 after client data arrives.
 - Product galleries, descriptions, options, quantity controls, and product-specific WhatsApp messages.
 - Shopify Storefront Cart API integration in the Canadian market with CAD pricing.
 - A multi-item bag that redirects to Shopify's secure checkout URL.
@@ -73,9 +73,11 @@ A final live read audit confirmed the originally configured 11 products in the C
 
 ## Catalog and media updates
 
-Edit [js/products.js](js/products.js) to add a product, change approved campaign copy, update local media paths, or change a product slug. Keep Shopify handles in `storeUrl` accurate because the app derives live product reads from that URL.
+Edit [js/products.js](js/products.js) to add a product, change approved campaign copy, update local media paths, or change a product slug. Keep Shopify handles in `storeUrl` accurate because the app derives live product reads from that URL. Follow the [product intake and catalog update guide](docs/PRODUCT_INTAKE_TEMPLATE.md) when the client sends the next batch; it records the Shopify, media, approval, and SEO checks for each item. The current 12 entries remain in place, and approximately 20–25 total is a planning target rather than a hard cap.
 
-Use product media that is approved by the client. The current 55 PNG files are about 32 MB in total. Convert and resize copies for production before paid traffic, while retaining the supplied originals separately.
+Use product media that is approved by the client. The existing 55 PNG files are about 32 MB in total. Recheck the combined asset weight and responsive performance after the new media arrives; convert and resize production copies while retaining the supplied originals separately.
+
+The current SEO setup gives the landing page one canonical root URL. Its `?product=<slug>` selections are not separate indexable product pages. See [SEO.md](docs/SEO.md) for the current scope and the product-route work required if the client wants each item to rank or share with its own metadata.
 
 ## GitHub and static deployment
 

@@ -8,7 +8,13 @@ On 2026-11-14, the current working tree from `D:\Medicine Bear Arts` was copied 
 
 The existing twelve product entries, their local media, and the Shopify Storefront API configuration were preserved. No new products were added because product identities/content/media were not supplied for this landing page. The copied page now targets `https://sales.medicinebeararts.com/` in its canonical, sharing metadata, JSON-LD, `robots.txt`, and `sitemap.xml`; SEO scope and launch steps are recorded in [SEO.md](SEO.md).
 
-No host, DNS record, HTTPS deployment, GitHub remote, analytics configuration, or Search Console property has been set up. A DNS lookup on 2026-11-14 returned that `sales.medicinebeararts.com` does not exist. The page still uses the existing Shopify store for live Canadian-market commerce and checkout. Product-specific query URLs still represent one page, not twelve separately indexable product pages.
+No host, DNS record, HTTPS deployment, GitHub remote, analytics configuration, or Search Console property has been set up. A DNS lookup on 2026-11-14 returned that `sales.medicinebeararts.com` does not exist. The page still uses the existing Shopify store for live Canadian-market commerce and checkout. Product-specific query URLs still represent one page, not separately indexable product pages. The owner now plans for approximately 20–25 total products; the original 12 remain configured, and no additional product data has arrived.
+
+## Product catalog and SEO preparation — documentation updated
+
+On 2026-11-14, the owner set an approximate target of 20–25 total products for this project. Added [PRODUCT_INTAKE_TEMPLATE.md](PRODUCT_INTAKE_TEMPLATE.md) with per-product Shopify, approved copy/media, variant, rights, SEO, and QA fields, plus a batch addition checklist. Updated the README, frontend setup, SEO, roadmap, decision log, and master context to reflect the target and preserve the current 12. No products or product facts were invented or added.
+
+The current site-level SEO metadata remains local and root-only. `?product=<slug>` links still share the root canonical; distinct product search pages, product structured data, deployment, Search Console, DNS, and live indexing are not completed. If the client expects individual product SEO, that route work remains pending product data and a route decision.
 
 ## Cart and order-source separation
 
@@ -57,6 +63,6 @@ The long-description control uses the browser-native details element with an exp
 
 ## Next recommended action
 
-Confirm the product-image matches and option imagery, consider media optimization, review content and testimonial permissions, and arrange merchant-approved end-to-end checkout testing, tracking and deployment decisions. See [FRONTEND_SETUP.md](FRONTEND_SETUP.md) for local setup.
+When the client sends product links, details, and approved media, complete [PRODUCT_INTAKE_TEMPLATE.md](PRODUCT_INTAKE_TEMPLATE.md) for each item, add and verify the catalog entries while preserving the current 12, and confirm whether every product needs its own crawlable SEO page. Then review image/option matches, asset weight, content and testimonial permissions, and arrange merchant-approved end-to-end checkout testing, tracking, hosting, and deployment decisions. See [FRONTEND_SETUP.md](FRONTEND_SETUP.md) for local setup.
 
 Update this file as work is actually performed and verified; distinguish proposed work, in-progress work, completed work, and blockers. Record dates and link supporting decisions or evidence where useful.
