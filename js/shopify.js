@@ -2,7 +2,7 @@
 (() => {
   "use strict";
   const cartFields = `fragment CartFields on Cart {
-    id checkoutUrl totalQuantity
+    id checkoutUrl totalQuantity attributes { key value }
     cost { subtotalAmount { amount currencyCode } totalAmount { amount currencyCode } }
     lines(first: 50) { nodes { id quantity cost { totalAmount { amount currencyCode } }
       merchandise { ... on ProductVariant { id title selectedOptions { name value } product { handle title } } }
@@ -17,7 +17,8 @@
     const country = settings.country || "CA";
     if (country !== "CA") throw new Error("The storefront requires the Canadian market.");
     const publicToken = String(settings.publicToken || "").trim();
-    const key = `medicine-bear-shopify-cart-v1:${domain}`;
+    const cartNamespace = String(settings.cartNamespace || "default").trim().replace(/[^a-z0-9_-]/gi, "-") || "default";
+    const key = "medicine-bear-shopify-cart-v1:" + domain + ":" + cartNamespace;
     let memoryId = "";
     try { memoryId = localStorage.getItem(key) || ""; } catch (_) { /* Storage may be blocked. */ }
     const saveId = id => { memoryId = id || ""; try { if (memoryId) localStorage.setItem(key, memoryId); else localStorage.removeItem(key); } catch (_) { /* Cart remains available in memory. */ } };
@@ -43,7 +44,7 @@
       assertCAD(raw.cost?.subtotalAmount); assertCAD(raw.cost?.totalAmount);
       const checkout = new URL(raw.checkoutUrl);
       if (checkout.protocol !== "https:") throw new Error("The store returned an invalid checkout link.");
-      return { id: raw.id, checkoutUrl: checkout.href, totalQuantity: raw.totalQuantity, subtotal: Number(raw.cost.subtotalAmount.amount), total: Number(raw.cost.totalAmount.amount), currency: "CAD", warnings: warnings.map(item => item.message).filter(Boolean), lines: raw.lines.nodes.map(line => ({ id: line.id, quantity: line.quantity, total: Number(line.cost?.totalAmount?.amount), currency: line.cost?.totalAmount?.currencyCode, merchandise: line.merchandise })) };
+      return { id: raw.id, checkoutUrl: checkout.href, totalQuantity: raw.totalQuantity, subtotal: Number(raw.cost.subtotalAmount.amount), total: Number(raw.cost.totalAmount.amount), currency: "CAD", attributes: Array.isArray(raw.attributes) ? raw.attributes : [], warnings: warnings.map(item => item.message).filter(Boolean), lines: raw.lines.nodes.map(line => ({ id: line.id, quantity: line.quantity, total: Number(line.cost?.totalAmount?.amount), currency: line.cost?.totalAmount?.currencyCode, merchandise: line.merchandise })) };
     }
     async function readProducts(handles) {
       const unique = [...new Set(handles)];
@@ -87,7 +88,7 @@
       const cart = await getCart();
       const prior = cart?.lines.filter(line => line.merchandise?.id === variantId).reduce((total, line) => total + line.quantity, 0) || 0;
       const updated = !cart
-        ? await mutate("cartCreate", `mutation Create($input: CartInput!) @inContext(country: CA) { cartCreate(input: $input) { cart { ...CartFields } userErrors { message } warnings { message } } } ${cartFields}`, { input: { buyerIdentity: { countryCode: "CA" }, lines: [{ merchandiseId: variantId, quantity }] } })
+        ? await mutate("cartCreate", `mutation Create($input: CartInput!) @inContext(country: CA) { cartCreate(input: $input) { cart { ...CartFields } userErrors { message } warnings { message } } } ${cartFields}`, { input: { attributes: Array.isArray(settings.cartAttributes) ? settings.cartAttributes : [], buyerIdentity: { countryCode: "CA" }, lines: [{ merchandiseId: variantId, quantity }] } })
         : await mutate("cartLinesAdd", `mutation Add($cartId: ID!, $lines: [CartLineInput!]!) @inContext(country: CA) { cartLinesAdd(cartId: $cartId, lines: $lines) { cart { ...CartFields } userErrors { message } warnings { message } } } ${cartFields}`, { cartId: cart.id, lines: [{ merchandiseId: variantId, quantity }] });
       const actual = updated.lines.filter(line => line.merchandise?.id === variantId).reduce((total, line) => total + line.quantity, 0) - prior;
       if (actual !== quantity) updated.warnings.push(`The store adjusted your request: ${Math.max(0, actual)} of ${quantity} requested items were added. Please review your cart.`);

@@ -7,6 +7,7 @@ Current stage: **independent local copy and SEO foundation complete; product add
 - Completed a byte-verified copy of the source working tree into `Medicine Bear Arts Landing Page 2`; created a fresh local Git repository with no remote to keep pushes isolated from the original project.
 - Preserved all 12 existing product entries and local assets. Adding further products is pending their approved Shopify links/details and media.
 - Added the requested sales-subdomain canonical, social metadata, brand/site JSON-LD, `robots.txt`, `sitemap.xml`, and [SEO.md](SEO.md).
+- Added a dedicated browser cart namespace and sales-page attributes to newly created Shopify carts. The original page is unchanged; both still use the same Shopify store, and an order has not been used to verify attribute carry-through.
 - Still pending: choose and connect the hosting provider, attach `sales.medicinebeararts.com`, verify HTTPS, create/connect the new hosted Git remote, and complete post-deployment SEO and commerce checks. No production changes were made.
 
 ## Phase 1: Planning and documentation — completed

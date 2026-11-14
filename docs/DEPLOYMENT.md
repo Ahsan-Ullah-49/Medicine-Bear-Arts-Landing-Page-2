@@ -6,6 +6,10 @@ This repository is a static frontend. It requires no server process, database, p
 
 Use an HTTPS static host. GitHub Pages is suitable for a client preview. A final advertising launch should use the client-approved domain and hosting plan.
 
+## Cart and order source
+
+The sales landing page uses a separate browser cart key and cart-ID namespace, and adds `sales_channel` / `sales_domain` cart attributes on cart creation. The original page is not edited. Both pages currently use `medicine-bear-arts.myshopify.com`; orders remain in the same Shopify store. The attributes are intended to distinguish sales-page orders, but no test order has confirmed the finished order record and browser-supplied values can be changed. Native Shopify channel attribution is not configured: `CartInput.sourceName` requires a value owned by the Storefront access token, and this project has no dedicated channel token/source name. If the requirement is a separate Shopify admin/order database, configure a second Shopify store and its catalog and checkout before launch.
+
 ## Requested sales subdomain
 
 The requested hostname is `sales.medicinebeararts.com`. The repository's canonical tag, social URL, JSON-LD, robots file, and sitemap are prepared for that hostname, but the host has not been selected and no DNS or deployment change has been made. A DNS lookup on 2026-11-14 returned that the name does not exist. The local Git repository has no remote. Do not point DNS or publish until the owner selects the host and confirms the production release.

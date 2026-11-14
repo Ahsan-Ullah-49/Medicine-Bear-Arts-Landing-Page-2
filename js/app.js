@@ -71,7 +71,7 @@
   let cartBusy = false;
   let cartNeedsRefresh = false;
   let commerceMessage = "";
-  const cartStorageKey = "medicine-bear-preview-bag-v2";
+  const cartStorageKey = "medicine-bear-landing-page-2-preview-bag-v1";
   let cart = {};
   try { const saved = JSON.parse(localStorage.getItem(cartStorageKey) || "{}"); if (saved && typeof saved === "object" && !Array.isArray(saved)) cart = saved; } catch (_) { /* Storage may be unavailable. */ }
 

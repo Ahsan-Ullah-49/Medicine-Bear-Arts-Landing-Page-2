@@ -4,7 +4,7 @@
 window.MEDICINE_BEAR_CONFIG = {
   "whatsappNumber": "18253433116",
   "currency": "CAD",
-  "shopify": { "storeDomain": "medicine-bear-arts.myshopify.com", "apiVersion": "2026-10", "country": "CA" },
+  "shopify": { "storeDomain": "medicine-bear-arts.myshopify.com", "apiVersion": "2026-10", "country": "CA", "cartNamespace": "landing-page-2", "cartAttributes": [{"key":"sales_channel","value":"Medicine Bear Arts Landing Page 2"},{"key":"sales_domain","value":"sales.medicinebeararts.com"}] },
   "products": [
     {
       "slug": "the-whispers-of-the-needle",

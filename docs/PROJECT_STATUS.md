@@ -10,6 +10,10 @@ The existing twelve product entries, their local media, and the Shopify Storefro
 
 No host, DNS record, HTTPS deployment, GitHub remote, analytics configuration, or Search Console property has been set up. A DNS lookup on 2026-11-14 returned that `sales.medicinebeararts.com` does not exist. The page still uses the existing Shopify store for live Canadian-market commerce and checkout. Product-specific query URLs still represent one page, not twelve separately indexable product pages.
 
+## Cart and order-source separation
+
+The new page uses a project-specific browser bag key and Shopify cart-ID namespace, plus `sales_channel` and `sales_domain` cart attributes when creating a Shopify cart. Shopify documents cart attributes as continuing through checkout; the Storefront Order type exposes custom attributes. This is intended to distinguish sales-page orders, but both pages still create orders in the same Shopify store/admin. No live checkout or test order has verified the finished order record, and a browser-supplied attribute is not tamper-proof proof of origin. Native Shopify channel attribution via `CartInput.sourceName` remains unconfigured because no matching channel-owned Storefront access token/source name is available in this project. A second Shopify store would be required for a separate order database.
+
 ## Current stage: Local Shopify integration and testing
 
 The initial documentation foundation was completed and verified on 2026-11-03:

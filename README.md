@@ -53,6 +53,16 @@ http://127.0.0.1:5500/index.html?product=celestial-moonlight-pendant
 
 Opening `index.html` directly can show the layout, but use a local server for the most reliable Storefront API behavior.
 
+## Cart and order separation
+
+This project keeps its browser preview bag and Shopify cart ID in project-specific storage namespaces. Its newly created Shopify carts carry `sales_channel=Medicine Bear Arts Landing Page 2` and `sales_domain=sales.medicinebeararts.com`. Shopify supports cart attributes at cart creation, documents that checkout attributes persist through checkout, and exposes custom attributes on Storefront orders ([CartCreate](https://shopify.dev/docs/api/storefront/latest/mutations/cartCreate), [Checkout Attributes API](https://shopify.dev/docs/api/checkout-ui-extensions/latest/target-apis/checkout-apis/attributes-api), [Order](https://shopify.dev/docs/api/storefront/latest/objects/Order)).
+
+These attributes are intended as a source label, but they have not been confirmed on a completed order and are not tamper-proof proof of origin. Do not use them as the only fulfillment or accounting control without an owner-authorized order check.
+
+Shopify also supports `CartInput.sourceName` for native channel attribution, but its value must belong to a channel owned by the Storefront access token. This project currently uses tokenless Storefront API calls and has no configured channel-specific source name, so native **Sales by Channel** attribution is not configured ([CartInput](https://shopify.dev/docs/api/storefront/2026-10/input-objects/CartInput)).
+
+Both landing pages still use the same Shopify store and product catalog. Orders will appear in the same Shopify admin/store; the marker distinguishes their source, but this is not a separate Shopify account or order database. A genuinely separate order system requires a separate Shopify store and its own product, inventory, checkout, payment, tax, and shipping setup. No test order has been placed.
+
 ## Shopify integration
 
 The page uses the public Storefront API at `medicine-bear-arts.myshopify.com` in the Canadian market. It does not contain an Admin API credential, a private token, payment logic, or a custom backend.

@@ -49,6 +49,10 @@ The custom interface should create and manage a Shopify cart that can contain mu
 
 Redirect using the cart's official Shopify checkout URL after successful cart creation and updates. Never collect card details or build a payment processor or order database. The client's checkout settings and payment, shipping, tax, market, and domain compatibility must be verified. A click on checkout is an initiation event, not proof of an order or payment.
 
+### Sales-page cart and order attribution
+
+The `Medicine Bear Arts Landing Page 2` copy uses a distinct browser storage key and cart-ID namespace and sets `sales_channel` and `sales_domain` cart attributes on new carts. These attributes are intended to mark completed orders from this landing page. The original campaign page is not changed. Both pages still use the same Shopify store and shared product catalog, so orders remain in one Shopify admin/store. A second store and separate catalog/commerce configuration are required for a truly independent order system. No live test order has been placed; confirm the attributes on an owner-authorized test order before relying on them for fulfillment or accounting. Because the cart attributes are supplied by browser code, they are a source label rather than tamper-proof proof. Shopify channel attribution via `CartInput.sourceName` is not configured because this project has no matching channel-owned Storefront access token/source name.
+
 ## 7. Advertising, attribution, and privacy
 
 Plan these event families; use each platform's current official specifications and account settings when implementation begins. IDs, integration ownership, event payloads, consent rules, and actual configuration remain pending.
